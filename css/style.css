@@ -900,45 +900,6 @@ button:not(:disabled) {
   padding-right: 0px;
 }
 
-.pagination {
-  line-height: 20px;
-  font-size: 13px;
-}
-
-.pagination li {
-  display: inline;
-}
-
-.pagination li:first-child a {
-  border-left-width: 1px;
-  border-radius: 4px 0 0 4px;
-}
-
-.pagination li:last-child a {
-  border-radius: 0 4px 4px 0;
-}
-
-.pagination li a {
-  float: left;
-  text-decoration: none;
-  color: #363952;
-  border: 1px solid #dee2e6;
-  border-left-width: 0;
-  background: #ffffff;
-}
-
-.pagination li a:hover {
-  color: #ffffff;
-  background: #363952;
-  border-color: #363952;
-}
-
-.pagination .active a {
-  color: #ffffff;
-  background: #363952 !important;
-  border-color: #363952;
-  cursor: not-allowed;
-}
 
 #preloader {
   position: fixed;
@@ -1277,6 +1238,28 @@ p {
   }
 }
 
+#logo-img {
+  height: 80px; /* Increase this value to make the logo bigger */
+  width: auto; /* This will maintain the aspect ratio */
+}
+
+/* For larger screens */
+@media (min-width: 992px) {
+  #logo-img {
+      height: 100px;
+      width: auto;
+  }
+}
+
+/* For smaller screens */
+@media (max-width: 991px) {
+  #logo-img {
+      height: 60px;
+      width: auto;
+  }
+}
+
+
 .navbar-custom {
   padding: 20px 0;
   width: 100%;
@@ -1295,18 +1278,6 @@ p {
 }
 
 
-.navbar-custom .navbar-brand {
-  margin-right: 0 !important;
-}
-
-
-.navbar-custom .navbar-brand .l-dark {
-  display: none;
-}
-
-.navbar-custom .navbar-brand .l-light {
-  display: inline-block;
-}
 
 /*rr items */
 .navbar-custom .navbar-nav .nav-item .nav-link {
@@ -1432,17 +1403,9 @@ p {
   color: #adb5bd;
 }
 
-.nav-sticky.navbar-custom .navbar-brand {
-  margin-right: 0 !important;
-}
 
-.nav-sticky.navbar-custom .navbar-brand .l-dark {
-  display: inline-block;
-}
 
-.nav-sticky.navbar-custom .navbar-brand .l-light {
-  display: none;
-}
+
 
 .nav-sticky.navbar-custom .navbar-nav {
   margin-top: 0px;
@@ -1466,9 +1429,7 @@ p {
   background-color: #ffffff;
 }
 
-.nav-sticky .navbar-brand {
-  color: #363952!important;
-}
+
 
 .nav-sticky .social-icon.light-social-icon li a {
   color: #363952;
@@ -1514,12 +1475,7 @@ p {
   .navbar-custom .navbar-nav .dropdown .dropdown-menu:before {
     display: none;
   }
-  .navbar-custom .navbar-brand .l-dark {
-    display: inline-block !important;
-  }
-  .navbar-custom .navbar-brand .l-light {
-    display: none;
-  }
+
   .navbar-custom .social-icon {
     margin-top: 12px !important;
   }
@@ -2025,16 +1981,35 @@ p {
 .portfolioFilter li a:hover, .portfolioFilter li a.active {
   color: #ffffff !important;
   background-color: #363952;
+
 }
+
+
 
 .portfolio-box {
+  height: 350px; /* You can adjust this value as needed */
+  border-radius: 10px; /* Optional: for a rounded corner effect */
+  overflow: hidden; /* Ensures overflow images do not exceed the container */
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  padding: 10px; /* Adjust the padding value as needed */
+  margin-bottom: 20px; /* Adjust the margin value as needed */
 }
 
-.portfolio-box .portfolio-box-img img {
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+.portfolio-box-img {
+  position: relative;
+  padding-bottom: 100%; /* This will create a 1:1 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.portfolio-box-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This will maintain the aspect ratio and fill the container */
 }
 
 .portfolio-box .portfolio-box-img .overlay-work {
@@ -2048,6 +2023,7 @@ p {
   transition: all 0.5s ease;
   background-color: rgba(60, 72, 88, 0.65);
 }
+
 
 .portfolio-box .portfolio-box-img .overlay-work .work-content {
   position: absolute;
@@ -2063,7 +2039,7 @@ p {
   width: 45px;
   line-height: 43px;
   -webkit-transform: translateY(40px);
-          transform: translateY(40px);
+  transform: translateY(40px);
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
@@ -2096,22 +2072,20 @@ p {
 
 .portfolio-box:hover {
   -webkit-box-shadow: 0 10px 25px rgba(60, 72, 88, 0.15) !important;
-          box-shadow: 0 10px 25px rgba(60, 72, 88, 0.15) !important;
+  box-shadow: 0 10px 25px rgba(60, 72, 88, 0.15) !important;
   -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .portfolio-box:hover .portfolio-box-img img {
-  -webkit-transform: rotate(2deg) scale(1.15);
-          transform: rotate(2deg) scale(1.15);
-  opacity: 0.5;
+  -webkit-transform: rotate(2deg) scale(1.05); /* Adjusted scale to prevent excessive rotation */
+  transform: rotate(2deg) scale(1.05);
+  opacity: 0.7; /* Adjusted opacity for softer hover effect */
+}
+.portfolio-box:hover .portfolio-box-img .overlay-work {
+  opacity: 1; /* Reveal overlay on hover */
 }
 
-.portfolio-box:hover .portfolio-box-img .overlay-work {
-  opacity: 1;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
 
 .portfolio-box:hover .portfolio-box-img .overlay-work .work-content .work-icon {
   -webkit-transform: translateY(0px);
